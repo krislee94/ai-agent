@@ -75,8 +75,22 @@ function shouldUseFallback(error) {
     return true;
   }
 
+  const code = error?.code ?? error?.error?.code ?? error?.type ?? error?.error?.type;
   const message = formatError(error);
-  return status === 400 && /embedding|model|not found|unsupported/i.test(message);
+  if (error?.name === "TimeoutError" || error?.name === "AbortError") {
+    return true;
+  }
+
+  if (/arrearage/i.test(String(code))) {
+    return true;
+  }
+
+  return (
+    status === 400 &&
+    /embedding|model|not found|unsupported|arrearage|overdue|access denied|good standing|timed out/i.test(
+      message,
+    )
+  );
 }
 
 function formatError(error) {

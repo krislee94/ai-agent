@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { MilvusClient, MetricType } from "@zilliz/milvus2-sdk-node";
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
+import { ChatOpenAI } from "@langchain/openai";
+import { embeddingModel } from "./base-embeding-model.mjs";
 
 const COLLECTION_NAME = "ai_diary";
 const VECTOR_DIM = 1024;
@@ -15,16 +16,6 @@ const model = new ChatOpenAI({
   },
 });
 
-// 初始化 Embeddings 模型
-const embeddings = new OpenAIEmbeddings({
-  apiKey: process.env.OPENAI_API_KEY,
-  model: process.env.EMBEDDINGS_MODEL_NAME,
-  configuration: {
-    baseURL: process.env.OPENAI_BASE_URL,
-  },
-  dimensions: VECTOR_DIM,
-});
-
 // 初始化 Milvus 客户端
 const client = new MilvusClient({
   address: "localhost:19530",
@@ -34,7 +25,7 @@ const client = new MilvusClient({
  * 获取文本的向量嵌入
  */
 async function getEmbedding(text) {
-  const result = await embeddings.embedQuery(text);
+  const result = await embeddingModel.embedQuery(text);
   return result;
 }
 
