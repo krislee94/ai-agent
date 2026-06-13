@@ -66,6 +66,7 @@ async function tokenCountTruncation() {
   const history = new InMemoryChatMessageHistory();
   const maxTokens = 100; // 限制最多 100 个 token
 
+  // 计算token的计数
   const enc = getEncoding("cl100k_base");
 
   const messages = [
