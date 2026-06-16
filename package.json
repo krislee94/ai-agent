@@ -2,7 +2,8 @@
 	"dependencies": {
 		"@langchain/core": "^1.1.49",
 		"@langchain/openai": "^1.4.7",
-		"zod": "^4.4.3",
+    "zod": "^4.4.3",
+    "@nestjs/mapped-types": "*",
 		"@nestjs/config": "^4.0.4"
 	}
 }
