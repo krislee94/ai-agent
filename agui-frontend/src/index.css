@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+/* Streamdown 的表格、代码块和 Mermaid 样式依赖 Tailwind 类，需要显式纳入扫描。 */
+@source '../node_modules/streamdown/dist/**/*.js';
+@source '../node_modules/@streamdown/code/dist/**/*.js';
+@source '../node_modules/@streamdown/mermaid/dist/**/*.js';
+
+@variant dark (@media (prefers-color-scheme: dark));
+
+:root {
+  --text: #586174;
+  --muted-text: #778195;
+  --text-h: #101828;
+  --bg: #f8fafc;
+  --panel-bg: #ffffff;
+  --sidebar-bg: #f1f5f9;
+  --composer-bg: rgba(255, 255, 255, 0.92);
+  --assistant-bubble: #ffffff;
+  --border: #dbe3ef;
+  --code-bg: #eef2f7;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --accent-border: rgba(37, 99, 235, 0.32);
+  --tool-bg: #eef7ff;
+  --tool-bg-2: #e6fffb;
+  --danger: #ef4444;
+
+  --sans: Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: Inter, ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --background: var(--bg);
+  --foreground: var(--text-h);
+  --card: var(--panel-bg);
+  --card-foreground: var(--text-h);
+  --muted: var(--code-bg);
+  --muted-foreground: var(--text);
+  --input: var(--border);
+  --primary: var(--accent);
+  --primary-foreground: #ffffff;
+  --radius: 8px;
+
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #a5b4c8;
+    --muted-text: #8493a8;
+    --text-h: #f8fafc;
+    --bg: #0b1120;
+    --panel-bg: #111827;
+    --sidebar-bg: #0f172a;
+    --composer-bg: rgba(17, 24, 39, 0.9);
+    --assistant-bubble: #111827;
+    --border: #263244;
+    --code-bg: #172033;
+    --accent: #60a5fa;
+    --accent-soft: rgba(96, 165, 250, 0.12);
+    --accent-border: rgba(96, 165, 250, 0.34);
+    --tool-bg: #0f2741;
+    --tool-bg-2: #0e302e;
+    --primary-foreground: #0b1120;
+  }
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100svh;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--accent);
+}
+
+#root {
+  min-height: 100svh;
+}
+
+code {
+  font-family: var(--mono);
+}
+
+p code,
+li code,
+td code,
+th code,
+h1 code,
+h2 code,
+h3 code,
+blockquote code {
+  display: inline-flex;
+  align-items: baseline;
+  border-radius: 4px;
+  color: var(--text-h);
+  font-size: 0.92em;
+  line-height: 1.35;
+  padding: 2px 6px;
+  background: var(--code-bg);
+}
+
+pre code,
+[data-streamdown='code-block'] code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}

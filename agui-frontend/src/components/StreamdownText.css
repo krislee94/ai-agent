@@ -1,0 +1,57 @@
+.streamdown-wrap {
+  max-width: 100%;
+  text-align: left;
+}
+
+.streamdown-content {
+  color: var(--text-h);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.streamdown-content :where(p) {
+  margin: 0;
+}
+
+.streamdown-content :where(p + p) {
+  margin-top: 0.7rem;
+}
+
+.streamdown-content :where(ul, ol) {
+  margin: 0.7rem 0;
+  padding-left: 1.2rem;
+}
+
+.streamdown-content :where(blockquote) {
+  margin: 0.8rem 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--accent-border);
+  color: var(--text);
+}
+
+.streamdown-content :where(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.streamdown-content :where(th, td) {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.streamdown-content :where(th) {
+  background: var(--code-bg);
+}
+
+.streamdown-wrap [data-streamdown='code-block'] {
+  margin: 0.8rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.streamdown-wrap [data-streamdown='code-block'] pre {
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
